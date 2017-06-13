@@ -1,0 +1,7 @@
+# humidity and temp from gpio
+  - platform: dht
+    sensor: DHT22
+    pin: 23
+    monitored_conditions:
+      - temperature
+      - humidity

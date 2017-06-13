@@ -1,0 +1,241 @@
+- id: no_movement_landing_off
+  alias: Turn off light light 15 minutes after last movement
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.motion_sensor_1
+      from: 'on'
+      to: 'off'
+      for:
+      minutes: 15
+  action:
+      service: light.turn_off
+      entity_id: light.main_light
+      
+- id: movement_landing_on
+  alias: Turn on light when there is movement
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.motion_sensor_1
+      from: 'off'
+      to: 'on'
+  condition:
+    - condition: sun
+      after: sunset
+      # Optional offset value
+      after_offset: "-01:00:00"
+  action:
+    - service: light.turn_on
+      entity_id: light.main_light
+      data:
+      brightness: 85
+
+- id: shed_sunset
+  alias: Turn on shed lights when sun sets
+  hide_entity: True
+  trigger:
+    - platform: sun
+      event: sunset
+      offset: "-00:05:00"
+  condition:
+    - condition: state
+      entity_id: group.all_devices
+      state: 'home'
+  action:
+    - service: homeassistant.turn_on
+      entity_id: switch.shed
+      
+    - service: notify.rich
+      data:
+        message: "Shed turned on 5 min b4 sunset"
+        title: "sunset"
+        
+- id: on_b4_sunset
+  alias: Turn on light when sun is nearly set
+  trigger:
+    - platform: sun
+      event: sunset
+      offset: "-00:50:00"
+  condition:
+    - condition: state
+      entity_id: group.all_devices
+      state: 'home'
+  action:
+    - service: homeassistant.turn_on
+      entity_id: group.living_room
+    - service: homeassistant.turn_on
+      entity_id: light.backlight
+    - service: homeassistant.turn_on
+      entity_id: light.stairs
+    - service: homeassistant.turn_on
+      entity_id: switch.socket1
+    - service: homeassistant.turn_on
+      entity_id: switch.socket2
+    - service: homeassistant.turn_on
+      entity_id: switch.flowers
+    - service: switch.turn_on
+      entity_id: switch.socket2
+      
+    - service: notify.rich
+      data:
+        message: "Downstairs turned on 50 min b4 sunset"
+        title: "sunset"
+
+- id: bedtime_off
+  alias: Turn off when Bedtime
+  trigger:
+    - platform: time
+      hours: 23
+      minutes: 45
+      seconds: 0
+  condition:
+    - condition: state       
+      entity_id: group.all_devices
+      state: 'home'
+  action:
+    - service: light.turn_off
+      entity_id: group.downstairs
+    - service: switch.turn_off
+      entity_id: group.downstairs
+    - service: switch.turn_off
+      entity_id: switch.shed
+    - service: switch.turn_off
+      entity_id: switch.flowers
+
+    - service: notify.rich
+      data:
+        message: "nightly turned off 23:45"
+        title: "bedtime"
+        
+- id: fishpump_off
+  alias: Turn off fish pump
+  trigger:
+    - platform: time
+      hours: 06
+      minutes: 30
+      seconds: 0
+  condition:
+    - condition: state       
+      entity_id: group.all_devices
+      state: 'home'
+  action:
+    - service: switch.turn_off
+      entity_id: switch.fish_pump
+      
+    - service: notify.rich
+      data:
+        message: "fish pump turned off 06:30"
+        title: "morning stuff"
+        
+- id: fishpump_on
+  alias: Turn on fish pump
+  trigger:
+    - platform: time
+      hours: 23
+      minutes: 55
+      seconds: 0
+  condition:
+    - condition: state       
+      entity_id: group.all_devices
+      state: 'home'
+  action:
+    - service: switch.turn_on
+      entity_id: switch.fish_pump
+      
+    - service: notify.rich
+      data:
+        message: "fish pump turned on 23:55"
+        title: "bedtime stuff"
+  
+- id: am_downstairs_off
+  alias: Turn off downstairs morning
+  trigger:
+    - platform: time
+      hours: 08
+      minutes: 05
+      seconds: 0
+  condition:
+    - condition: state       
+      entity_id: group.all_devices
+      state: 'home'
+  action:
+    - service: light.turn_off
+      entity_id: group.downstairs
+    - service: switch.turn_off
+      entity_id: group.downstairs
+    - service: switch.turn_off
+      entity_id: switch.socket1
+    - service: switch.turn_off
+      entity_id: switch.flowers
+      
+    - service: notify.rich
+      data:
+        message: "nmorningturned off 08:05"
+        title: "morning down off"
+  
+- id: am_downstairs_on
+  alias: Turn on downstairs morning
+  trigger:
+    - platform: time
+      hours: 06
+      minutes: 30
+      seconds: 0
+  condition:
+    - condition: sun       
+      before: sunrise
+      before_offset: "+1:00:00"
+  action:
+    - service: light.turn_on
+      entity_id: group.downstairs
+    - service: switch.turn_on
+      entity_id: group.downstairs
+    - service: switch.turn_on
+      entity_id: switch.socket1
+    - service: switch.turn_on
+      entity_id: switch.flowers
+      
+    - service: notify.rich
+      data:
+        message: "nmorningturned on 06:30"
+        title: "morning down"
+   
+- id: am_upstairs_off
+  alias: Turn off upstairs morning
+  trigger:
+    - platform: sun
+      event: sunrise
+      offset: "+00:50:00"
+  condition:
+    - condition: state       
+      entity_id: group.all_devices
+      state: 'home'
+  action:
+    - service: light.turn_off
+      entity_id: light.main_light
+      
+    - service: notify.rich
+      data:
+        message: "morning turned off sunrise +50min"
+        title: "morning up off"
+  
+- id: am_bathroom_on
+  alias: Turn on bathroom morning
+  trigger:
+    - platform: time
+      hours: 06
+      minutes: 15
+      seconds: 0
+  condition:
+    - condition: sun       
+      before: sunrise
+      before_offset: "+01:00:00"
+  action:
+    - service: light.turn_on
+      entity_id: light.main_light
+      data:
+        brightness: 65
+      
+    - service: notify.rich
+      data:
+        message: "morning on at 06:15"
+        title: "bathroom morning"
+  

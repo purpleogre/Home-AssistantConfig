@@ -1,0 +1,27 @@
+#turn on things just before sunset
+  - alias: 'Turn on downstairs morning'
+    #hide_entity: True
+    trigger:
+      platform: time
+      hours: 06
+      minutes: 30
+      seconds: 0
+    condition:
+      condition: sun       
+      before: sunrise
+      before_offset: "+01:00:00"
+    action:
+      - service: light.turn_on
+        entity_id: group.downstairs
+      - service: switch.turn_on
+        entity_id: group.downstairs
+      - service: switch.turn_on
+        entity_id: switch.socket1
+      - service: switch.turn_on
+        entity_id: switch.flowers
+        
+      - service: notify.rich
+        data:
+          message: "nmorningturned on 06:30"
+          title: "morning down"
+

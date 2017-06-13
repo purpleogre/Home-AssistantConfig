@@ -1,0 +1,12 @@
+#turn on things movement
+- alias: Turn off light light 15 minutes after last movement
+  trigger:
+    platform: state
+    entity_id: binary_sensor.motion_sensor_1
+    from: 'on'
+    to: 'off'
+    for:
+      minutes: 15
+  action:
+    service: light.turn_off
+    entity_id: light.main_light

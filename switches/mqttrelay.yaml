@@ -1,0 +1,92 @@
+# mqtt yunshan
+  - platform: mqtt
+    name: "LG_Artwork"
+    state_topic: "stat/LGART/POWER"
+    command_topic: "cmnd/LGART/POWER"
+    qos: 1
+    payload_on: "ON"
+    payload_off: "OFF"
+    retain: true
+    optimistic: false
+  - platform: mqtt
+    name: "Flowers"
+    state_topic: "stat/sonoff20_1/POWER"
+    command_topic: "cmnd/sonoff20_1/POWER"
+    qos: 1
+    payload_on: "ON"
+    payload_off: "OFF"
+    retain: true
+    optimistic: false
+  - platform: mqtt
+    name: "Shed"
+    state_topic: "stat/sonoff20_2/POWER"
+    command_topic: "cmnd/sonoff20_2/POWER"
+    qos: 1
+    payload_on: "ON"
+    payload_off: "OFF"
+    retain: true
+    optimistic: false
+  - platform: mqtt
+    name: "Bedroom lamp"
+    state_topic: "stat/sonoff20_3/POWER"
+    command_topic: "cmnd/sonoff20_3/POWER"
+    qos: 1
+    payload_on: "ON"
+    payload_off: "OFF"
+    retain: true
+    optimistic: false
+  - platform: mqtt
+    name: "attic lamp"
+    state_topic: "stat/sonoff20_4/POWER"
+    command_topic: "cmnd/sonoff20_4/POWER"
+    qos: 1
+    payload_on: "ON"
+    payload_off: "OFF"
+    retain: true
+    optimistic: false
+  - platform: mqtt
+    name: "star"
+    state_topic: "stat/sonoff20_5/POWER"
+    command_topic: "cmnd/sonoff20_5/POWER"
+    qos: 1
+    payload_on: "ON"
+    payload_off: "OFF"
+    retain: true
+    optimistic: false
+  - platform: mqtt
+    name: "cupboard lamp"
+    state_topic: "stat/sonoff20_6/POWER"
+    command_topic: "cmnd/sonoff20_6/POWER"
+    qos: 1
+    payload_on: "ON"
+    payload_off: "OFF"
+    retain: true
+    optimistic: false
+  - platform: mqtt
+    name: "PC lamp"
+    state_topic: "stat/sonoff1/POWER"
+    command_topic: "cmnd/sonoff1/POWER"
+    qos: 1
+    payload_on: "ON"
+    payload_off: "OFF"
+    retain: true
+    optimistic: false
+  - platform: mqtt
+    name: "fish pump"
+    state_topic: "stat/sonofffish/POWER1"
+    command_topic: "cmnd/sonofffish/POWER1"
+    qos: 1
+    payload_on: "ON"
+    payload_off: "OFF"
+    retain: true
+    optimistic: false
+  - platform: mqtt
+    name: "fish light"
+    state_topic: "stat/sonofffish/POWER2"
+    command_topic: "cmnd/sonofffish/POWER2"
+    qos: 1
+    payload_on: "ON"
+    payload_off: "OFF"
+    retain: true
+    optimistic: false
+    

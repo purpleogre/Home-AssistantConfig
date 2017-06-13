@@ -1,0 +1,4 @@
+# hue_light
+  - platform: hue
+    host: 192.168.3.230
+    allow_hue_groups: True

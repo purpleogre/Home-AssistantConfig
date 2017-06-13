@@ -1,0 +1,5 @@
+sequence:
+  - service: light.hue_activate_scene
+    data:
+      group_name: "Bathroom"
+      scene_name: "Nightlight"

@@ -1,0 +1,11 @@
+# mqtt wemos
+  - platform: mqtt
+    name: "mon1 temp"
+    state_topic: "/mon1/DHT/Temperature"
+    qos: 0
+    unit_of_measurement: "°C"
+  - platform: mqtt
+    name: "mon1 Hum"
+    state_topic: "/mon1/DHT/Humidity"
+    qos: 0
+    unit_of_measurement: "%"

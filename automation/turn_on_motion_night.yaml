@@ -1,0 +1,25 @@
+#turn on things movement
+- alias: Turn on light when there is movement ater 11pm
+  trigger:
+    platform: state
+    entity_id: binary_sensor.motion_sensor_1
+    from: 'off'
+    to: 'on'
+  condition:
+    condition: and
+    conditions:
+      - condition: sun
+        after: sunset
+      - condition: time
+        after: '23:00:00'
+      
+  action:
+    - service: light.turn_on
+      entity_id: light.main_light
+      data:
+        brightness: 70
+#    - delay:
+#       minutes: 10
+#    - service: switch.turn_off
+#      entity_id: switch.sonoffs201
+    

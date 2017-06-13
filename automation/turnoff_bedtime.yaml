@@ -1,0 +1,32 @@
+#turn on things just before sunset
+  - alias: 'Turn off when Bedtime'
+    #hide_entity: True
+    trigger:
+      platform: time
+      hours: 23
+      minutes: 45
+      seconds: 0
+    condition:
+      condition: state       
+      entity_id: group.all_devices
+      state: 'home'
+    action:
+      - service: light.turn_off
+        entity_id: group.downstairs
+      - service: switch.turn_off
+        entity_id: group.downstairs
+      - service: switch.turn_off
+        entity_id: switch.shed
+      - service: switch.turn_off
+        entity_id: switch.flowers
+#      - service: switch.turn_on
+#        entity_id: switch.bedroom_lamp
+#      - service: light.turn_on
+#        entity_id: light.main_light
+#        data:
+#          brightness: 5
+        
+      - service: notify.rich
+        data:
+          message: "nightly turned off 23:45"
+          title: "bedtime"

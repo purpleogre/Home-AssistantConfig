@@ -1,0 +1,32 @@
+#turn on things just before sunset
+  - alias: 'Turn on light when sun is nearly set'
+    hide_entity: True
+    trigger:
+      platform: sun
+      event: sunset
+      offset: "-00:50:00"
+    condition:
+      - condition: state
+        entity_id: group.all_devices
+        state: 'home'
+    action:
+      - service: homeassistant.turn_on
+        entity_id: group.living_room
+      - service: homeassistant.turn_on
+        entity_id: light.backlight
+      - service: homeassistant.turn_on
+        entity_id: light.stairs
+      - service: homeassistant.turn_on
+        entity_id: switch.socket1
+      - service: homeassistant.turn_on
+        entity_id: switch.socket2
+      - service: homeassistant.turn_on
+        entity_id: switch.flowers
+      - service: switch.turn_on
+        entity_id: switch.socket2
+
+        
+      - service: notify.rich
+        data:
+          message: "Downstairs turned on 50 min b4 sunset"
+          title: "sunset"

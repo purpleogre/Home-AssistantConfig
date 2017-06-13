@@ -1,0 +1,14 @@
+# open weather
+  - platform: openweathermap
+    api_key: !secret ow_key
+    monitored_conditions:
+      - weather
+      - temperature
+      - clouds
+      - rain
+      - wind_speed
+      - pressure
+      - wind_bearing
+      - humidity
+      - snow
+

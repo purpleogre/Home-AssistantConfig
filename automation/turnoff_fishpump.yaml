@@ -1,0 +1,20 @@
+#turn on things just before sunset
+  - alias: 'Turn off fish pump'
+    #hide_entity: True
+    trigger:
+      platform: time
+      hours: 06
+      minutes: 30
+      seconds: 0
+    condition:
+      condition: state       
+      entity_id: group.all_devices
+      state: 'home'
+    action:
+      - service: switch.turn_off
+        entity_id: switch.fish_pump
+        
+      - service: notify.rich
+        data:
+          message: "fish pump turned off 06:30"
+          title: "morning stuff"

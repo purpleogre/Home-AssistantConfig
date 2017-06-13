@@ -1,0 +1,19 @@
+#turn on things  sunset
+  - alias: 'Turn on shed lights when sun sets'
+    hide_entity: True
+    trigger:
+      platform: sun
+      event: sunset
+      offset: "-00:05:00"
+    condition:
+      - condition: state
+        entity_id: group.all_devices
+        state: 'home'
+    action:
+      - service: homeassistant.turn_on
+        entity_id: switch.shed
+        
+      - service: notify.rich
+        data:
+          message: "Shed turned on 5 min b4 sunset"
+          title: "sunset"

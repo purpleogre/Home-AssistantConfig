@@ -1,0 +1,21 @@
+#turn on things just before sunset
+  - alias: 'Turn off upstairs morning'
+    #hide_entity: True
+    trigger:
+      platform: sun
+      event: sunrise
+      offset: "+00:50:00"
+    condition:
+      condition: state       
+      entity_id: group.all_devices
+      state: 'home'
+    action:
+      - service: light.turn_off
+        entity_id: light.main_light
+        
+      - service: notify.rich
+        data:
+          message: "morning turned off sunrise +50min"
+          title: "morning up off"
+
+

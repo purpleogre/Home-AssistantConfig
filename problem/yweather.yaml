@@ -1,0 +1,17 @@
+# Weather Prediction
+  - platform: yweather
+    woeid: 22471856
+    name: Leeds Bradford Airport
+  #woeid: 26042
+  #forecast: 0
+    monitored_conditions:
+      - weather
+      - weather_current
+      - temp_min
+      - temp_max
+      - wind_speed
+      - pressure
+      - visibility
+      - humidity
+      - temperature
+ 

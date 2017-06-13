@@ -1,0 +1,23 @@
+#turn on things just before sunset
+  - alias: 'Turn on bathroom morning'
+    #hide_entity: True
+    trigger:
+      platform: time
+      hours: 06
+      minutes: 15
+      seconds: 0
+    condition:
+      condition: sun       
+      before: sunrise
+      before_offset: "+01:00:00"
+    action:
+      - service: light.turn_on
+        entity_id: light.main_light
+        data:
+          brightness: 65
+        
+      - service: notify.rich
+        data:
+          message: "morning on at 06:15"
+          title: "bathroom morning"
+

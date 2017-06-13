@@ -1,0 +1,7 @@
+# magic light
+  - platform: flux_led
+    automatic_add: True
+    devices:
+      192.168.3.233:
+        name: smallstrip
+        mode: rgbw

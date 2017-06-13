@@ -1,0 +1,6 @@
+# media players
+  - platform: apple_tv
+    host: 192.168.3.103
+    login_id: !secret apple_key
+    host:192.168.3.145
+    login_id: !secret apple_key

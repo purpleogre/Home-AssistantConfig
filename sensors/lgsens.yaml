@@ -1,0 +1,6 @@
+# mqtt sonoff
+  - platform: mqtt
+    name: "LGART Temp"
+    state_topic: "tele/LGART/SENSOR"
+    value_template: "{{ value_json.DS18B20.Temperature }}"
+    unit_of_measurement: "°C"

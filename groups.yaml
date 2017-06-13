@@ -1,0 +1,228 @@
+environment_view:
+  name: environment
+  view: yes
+  icon: mdi:cloud
+  entities:
+    - group.temperature
+    - group.humidity
+    - group.light
+    - group.sound
+    - group.weather
+    - group.internal
+
+switches_view:
+  name: power switches
+  view: yes
+  icon: mdi:power-plug
+  entities:
+    - group.pswitches
+
+Rooms_view:
+  name: Rooms
+  view: yes
+  icon: mdi:home-variant
+  entities:
+    - group.upstairs
+    - group.downstairs
+    - group.brewshed
+
+lights_view:
+   name: Lights
+   view: yes
+   icon: mdi:lightbulb-outline
+   entities:
+     - group.lighting
+
+Entertainment_view:
+  name: Entertainment
+  view: yes
+  icon: mdi:play-circle-outline
+  entities:
+    - group.players
+
+devices_view:
+  name: devices
+  view: yes
+  icon: mdi:ethernet
+  entities:
+    - device_tracker.000420f1bb1b
+    - device_tracker.0019fb146266
+    - device_tracker.0060340e0742
+    - group.pis
+    - group.phones
+    - group.tablets
+    - group.hubs
+    - group.appledev
+    - group.ipcameras
+    - group.Discovered
+
+####GROUPS####
+
+lighting:
+   - switch.shed
+   - light.table_lamp
+   - switch.flowers
+   - switch.star
+   - light.backlight
+   - switch.socket2
+   - switch.fish_light
+   - light.stairs
+   - light.main_light
+   - light.smallstrip
+   - switch.LG_Artwork
+   - switch.bedroom_lamp
+   - switch.attic_lamp
+   - switch.pc_lamp
+   
+Weather:
+   - sensor.date__time
+   - sun.sun
+   - sensor.moon
+   - sensor.owm_temperature
+   - sensor.owm_humidity
+   - sensor.owm_condition
+   - sensor.owm_cloud_coverage
+   - sensor.owm_pressure
+   - sensor.owm_wind_speed
+   - sensor.owm_wind_bearing
+   - sensor.owm_rain
+   - sensor.owm_snow
+
+humidity:
+   - sensor.owm_humidity
+   - sensor.dht_sensor_humidity
+
+internal:
+   - sensor.dht_sensor_temperature
+   - sensor.dht_sensor_humidity
+   - sensor.lgart_temp
+   
+
+living_room:
+   - light.table_lamp
+   - switch.star
+   - switch.flowers
+
+back_room:
+   - light.backlight
+   - light.stairs
+   - switch.fish_light
+   - switch.fish_pump
+   - switch.pc_lamp
+
+
+downstairs:
+   - light.table_lamp
+   - light.backlight
+   - switch.fish_lights
+   - switch.fish_pump
+   - switch.star
+   - light.stairs
+   - switch.flowers
+   - switch.pc_lamp
+   - switch.cupboard_lamp
+
+upstairs:
+   - light.main_light
+   - light.smallstrip
+   - switch.LG_Artwork
+   - switch.bedroom_lamp
+   - switch.attic_lamp
+
+brewshed:
+   - switch.shed
+      
+pswitches:
+   - switch.bedroom_lamp
+   - switch.attic_lamp
+   - switch.LG_Artwork
+   - switch.fish_lights
+   - switch.fish_pump
+   - switch.star
+   - switch.cupboard_lamp
+   - switch.flowers
+   - switch.shed
+   - switch.pc_lamp
+
+players:
+   - media_player.guest_room
+   - media_player.yamaha_receiver
+   - device_tracker.bose_mini_ii_soundlink
+
+pis:
+  - device_tracker.b827eb06c973
+  - device_tracker.b827eb36e580
+  - device_tracker.blackpi3
+  - device_tracker.whitepi2
+  - device_tracker.b827eb3f6f71
+  
+phones:
+  - device_tracker.richards_iphone
+  - device_tracker.e0c767449619
+  
+tablets:
+  - device_tracker.0c47c985d45d
+  - device_tracker.38484cb0cf28
+  - device_tracker.74e1b67ae69a
+  - device_tracker.b8e8565104ea
+
+hubs:
+  - device_tracker.001788299075
+  - device_tracker.miho001
+  - device_tracker.echo_dot8fm
+  - device_tracker.8871e5833eb4
+  - device_tracker.000420f1bb1b
+  
+appledev:
+  - device_tracker.dc9b9cf0267a
+  - device_tracker.c869cd539950
+  - device_tracker.7cd1c3c656f8
+  - device_tracker.7073cbdf4d31
+  
+ipcameras:
+  - device_tracker.78a5dd0f14f3
+  - device_tracker.78a5dd0d9163
+  - device_tracker.78a5dd0d8c1a
+
+Discovered:
+  - device_tracker.tecevot4
+  - device_tracker.34a395606534
+  - device_tracker.blackberryd0da
+  - device_tracker.suzyss_iphone
+  - device_tracker.suzys_ipad
+  - device_tracker.sclene530c001
+  - device_tracker.sarahs_ipad
+  - device_tracker.nexus_5x
+  - device_tracker.garmin_glo_d900d
+  - device_tracker.galaxy_j5
+  - device_tracker.d8306266ccba
+  - device_tracker.d087e274f901
+  - device_tracker.d04f7e88fd11
+  - device_tracker.c42c0335a5f0
+  - device_tracker.blacksheep_keyboard
+  - device_tracker.blacksheep
+  - device_tracker.74d435ec55d7
+  - device_tracker.bluetooth_gps_receiver
+  - device_tracker.amazon_fire_tv_remote
+  - device_tracker.a43135e30d05
+  - device_tracker.a020a6195976
+  - device_tracker.a020a61952a9
+  - device_tracker.a020a60a923e
+  - device_tracker.9cd917deac95
+  - device_tracker.8883227dc19a
+  - device_tracker.80be05aed83d
+  - device_tracker.801f022f4acc
+  - device_tracker.801f022f49a0
+  - device_tracker.7c4ca574a26c
+  - device_tracker.78843c25d275
+  - device_tracker.70ece4ac2aba
+  - device_tracker.709e2940a944
+  - device_tracker.681729084c92
+  - device_tracker.60c5add94756
+  - device_tracker.5ccf7fd1a03a
+  - device_tracker.5ccf7f9f4006
+  - device_tracker.001c26caead3
+  - device_tracker.00215db78af8
+  - device_tracker.0025aee3a968
+  - device_tracker.0030b8d07654
+

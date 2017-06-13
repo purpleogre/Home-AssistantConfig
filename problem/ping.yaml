@@ -1,0 +1,5 @@
+  - platform: ping
+    hosts:
+      blackpi3: 192.168.3.120
+      whitepi2: 192.168.3.126
+      greenpi: 192.168.3.122
